@@ -1,12 +1,20 @@
 
-.wrap-list{
+[part_sentence]{
   height:300px;
+}
+.col1,.col2{
+  position: relative;
 }
 .col1{
   background: grey;
 }
 .col2{
   background: pink;
+}
+.wrap-list{
+  overflow:hidden;
+  height: 300px;
+  overflow: scroll;
 }
 a.word{
   display:block;
@@ -20,4 +28,21 @@ a.word{
   text-decoration: none;
   color:black;
   border:1px solid;
+}
+.non-visible .group{
+  display:none;
+}
+.non-visible .group.active{
+  display:block;
+}
+.eng-word{
+  height:100px;
+  background: white;
+  position: absolute;
+  bottom:-100px;
+  display: inline-block;
+  width: 100%;
+}
+.english{
+
 }

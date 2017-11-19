@@ -26,7 +26,7 @@ app.get('/', (req, res)=>{
     res.render('dict.ejs',{dict: result});
   });
 });
-
+/*
 app.get('/dict/:part/:group', (req, res)=>{
   console.log('req '+req.params.part);
   db.collection('dict').find({part:req.params.part,group:req.params.group}).toArray((err,result)=>{
@@ -37,6 +37,7 @@ app.get('/dict/:part/:group', (req, res)=>{
     res.render('dict.ejs',{dict: result, part: part, group: group});
   });
 });
+*/
 
 app.post('/dict', (req, res)=>{
   db.collection('dict').save(req.body, (err,result)=>{
@@ -47,23 +48,45 @@ app.post('/dict', (req, res)=>{
   });
 });
 
-app.get('/dictionary', (req, res)=>{
-  var col1, col2;
-  db.collection('dict').find({}).toArray((err,result)=>{
-      var noun = [], verb = [];
-      for(var i=0;i<result.length;i++){
-        if ( result[i].part == 'noun' ){
-          noun.push(result[i]);
-        }
-        else if ( result[i].part == 'verb' ){
-          verb.push(result[i]);
-        }
-      }
-      //console.log('noun '+noun);
 
-    res.render('dictionary.ejs',{dict: result, noun:noun, verb:verb});
+
+app.get('/dictionary/:part/:group', (req, res)=>{
+  console.log('req '+req.params.part);
+  db.collection('dict').find({part:req.params.part,group:req.params.group}).toArray((err,result)=>{
+    var words = [];
+    for(var i=0;i<result.length;i++){
+      if ( result[i].part == req.params.part ){
+        words.push({"rus_word":result[i].rus_word,"eng_word":result[i].eng_word});
+      }
+    }
+    words = words.filter(function(item , index, arr){ return arr.indexOf(item)=== index});
+    res.send(words);
   });
 });
+
+
+
+app.get('/dictionary/:part', (req, res)=>{
+  db.collection('dict').find({part:req.params.part}).toArray((err,result)=>{
+      var group = [];
+      for(var i=0;i<result.length;i++){
+        if ( result[i].part == req.params.part ){
+          group.push(result[i].group);
+        }
+      }
+      group = group.filter(function(item , index, arr){ return arr.indexOf(item)=== index});
+    res.send(group);
+  });
+});
+
+
+
+
+app.get('/dictionary', (req, res)=>{
+    res.render('dictionary.ejs');
+});
+
+
 
 
 app.get('/ajax', (req, res)=>{
