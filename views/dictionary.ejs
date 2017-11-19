@@ -14,47 +14,50 @@
   <div class='container-fluid'>
     <div class='row'>
       <div class='col1 col-lg-6'>
-        <!-- сущ #1 -->
-        <ul><!-- названия групп -->
-          <li>
-            <a>
-
-            </a>
-          </li>
-        </ul>
-
-        <div class='list-group'><!-- слова данной группы -->
-          <% for(var i=0; i<noun.length; i++) {%>
-            <a class='list-group-item word' href='#' eng_word=<%= noun[i].eng_word %>>
-              <%= noun[i].rus_word %>
-            </a>
-            <%} %>
+        <!-- #1 -->
+        <div class="pre-scrollable wrap-list">
+          <div class='list-group'><!-- слова данной группы -->
+            <% for(var i=0; i<noun.length; i++) {%>
+              <a class='list-group-item word' href='#' eng_word=<%= noun[i].eng_word %>>
+                <%= noun[i].rus_word %>
+              </a>
+              <%} %>
+          </div>
         </div>
         <div class='to-bottom eng-word'><!--fixed-bottom-->
           <div>
             Подлежащее
           </div>
           <span class='english'>
-
+            <!-- word -->
           </span>
         </div>
 
       </div>
       <div class='col2 col-lg-6'>
-dfdf
+        <!-- #2 -->
+        <div class="pre-scrollable wrap-list">
+          <div class='list-group'><!-- слова данной группы -->
+            <% for(var i=0; i<verb.length; i++) {%>
+              <a class='list-group-item word' href='#' eng_word=<%= verb[i].eng_word %>>
+                <%= verb[i].rus_word %>
+              </a>
+              <%} %>
+          </div>
+        </div>
+        <div class='to-bottom eng-word'><!--fixed-bottom-->
+          <div>
+            Сказуемое
+          </div>
+          <span class='english'>
+            <!-- word -->
+          </span>
+        </div>
+
       </div>
     </div>
   </div>
 
-  <div class='fixed-bottom'>
-    <div class='col1 col-lg-6'>
-
-    </div>
-    <div class='col2 col-lg-6'>
-
-    </div>
-
-  </div>
 
 
 

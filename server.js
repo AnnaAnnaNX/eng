@@ -50,17 +50,18 @@ app.post('/dict', (req, res)=>{
 app.get('/dictionary', (req, res)=>{
   var col1, col2;
   db.collection('dict').find({}).toArray((err,result)=>{
-      var noun = [];
-      //console.log('result '+result);
+      var noun = [], verb = [];
       for(var i=0;i<result.length;i++){
-      //console.log('result[i] '+result[i]);
         if ( result[i].part == 'noun' ){
           noun.push(result[i]);
+        }
+        else if ( result[i].part == 'verb' ){
+          verb.push(result[i]);
         }
       }
       //console.log('noun '+noun);
 
-    res.render('dictionary.ejs',{dict: result, noun:noun});
+    res.render('dictionary.ejs',{dict: result, noun:noun, verb:verb});
   });
 });
 
