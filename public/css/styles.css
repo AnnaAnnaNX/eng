@@ -1,0 +1,19 @@
+.col1{
+  background: grey;
+}
+.col2{
+  background: pink;
+}
+a.word{
+  display:block;
+  text-align: center;
+  text-decoration: none;
+  color:black;
+}
+.eng-word{
+  display:block;
+  text-align: center;
+  text-decoration: none;
+  color:black;
+  border:1px solid;
+}
