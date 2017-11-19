@@ -66,13 +66,8 @@ app.get('/dictionary', (req, res)=>{
 });
 
 
-app.post('/quotes', (req, res)=>{
-//  db.collection('quotes').save(req.body, (err,result)=>{
-//    if (err) return console.log(err)
-
-//    console.log('save in db')
-//    res.redirect('/');
-//  });
+app.get('/ajax', (req, res)=>{
+  res.send({"id":"1"});
 });
 
 mongoClient.connect('mongodb://ann:111@ds137801.mlab.com:37801/eng', (err,database)=>{console.log(1);
